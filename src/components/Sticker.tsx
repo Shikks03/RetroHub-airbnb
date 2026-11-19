@@ -37,12 +37,15 @@ export function Sticker({
   className = "",
   children,
 }: Props) {
-  const { name, x, y, size, rotate = 0, desktopOnly } = placement;
+  const { name, x, y, size, rotate = 0, desktopOnly, md } = placement;
   const style = {
-    left: `${x}%`,
-    top: `${y}%`,
+    "--x": `${x}%`,
+    "--y": `${y}%`,
+    "--x-md": `${md?.x ?? x}%`,
+    "--y-md": `${md?.y ?? y}%`,
     "--s": size,
     "--r": `${rotate}deg`,
+    "--r-md": `${md?.rotate ?? rotate}deg`,
     // Phone fly-in (CSS): enter from the nearest side, staggered by index.
     "--fx": x < 50 ? -1 : 1,
     "--i": index,

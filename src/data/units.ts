@@ -60,6 +60,8 @@ export type StickerPlacement = {
   rotate?: number;
   /** Hidden on phones to respect the ~4–5 stickers-per-screen cap. */
   desktopOnly?: boolean;
+  /** Desktop (≥768px) position/tilt override, when the layout differs. */
+  md?: { x?: number; y?: number; rotate?: number };
 };
 
 export type UnitPhoto = {
@@ -117,6 +119,7 @@ export const units: Unit[] = [
     // Wording pending client confirmation (SPEC §4.3).
     goodToKnow: [
       "₱1,000 refundable security deposit on top of the booking total",
+      "Honesty store on site: snacks and drinks, pay by online transfer or cash",
       "Valid IDs needed for you and everyone staying",
       "Building admin processes registrations weekdays 9 AM–4 PM, so message us ahead for weekend arrivals",
     ],
@@ -143,7 +146,7 @@ export const units: Unit[] = [
       {
         src: livingRoom,
         alt: "Living room in warm yellow light: a black tufted sofa, a wavy paper floor lamp, a wall of retro posters, a projector screen, metal shelves with retro game controllers and books, a black-and-white checkered rug and a rack of snacks.",
-        caption: "Movie corner, snacks included",
+        caption: "Movie corner + honesty snack bar",
         stickers: [
           { name: "lamp-wavy", x: -4, y: 46, size: 76, rotate: -8 },
           { name: "controller", x: 94, y: 80, size: 84, rotate: 12 },
@@ -198,15 +201,16 @@ export const units: Unit[] = [
       },
     ],
     // Positions are % of the intro stage. Blobs sit behind everything and
-    // bleed off-screen; on phones only ~4 small stickers show (SPEC §5).
+    // bleed off the left/right screen edges only, never the section's top or
+    // bottom. On phones only ~4 small stickers show (SPEC §5).
     introStickers: [
-      { name: "blob-sage", x: 2, y: 14, size: 240 },
-      { name: "blob-mustard", x: 98, y: 92, size: 280 },
+      { name: "blob-sage", x: 0, y: 22, size: 240 },
+      { name: "blob-mustard", x: 100, y: 74, size: 280 },
       { name: "daisy-smiley-pink", x: 88, y: 21, size: 72, rotate: 12 },
       { name: "sparkle", x: 8, y: 31, size: 40 },
       { name: "star", x: 86, y: 60, size: 60, rotate: -10 },
-      { name: "daisy-cream", x: 9, y: 80, size: 64, rotate: -8, desktopOnly: true },
-      { name: "squiggle", x: 48, y: 94, size: 120, rotate: -4, desktopOnly: true },
+      { name: "daisy-cream", x: 4, y: 62, size: 64, rotate: -8, desktopOnly: true },
+      { name: "squiggle", x: 48, y: 92, size: 120, rotate: -4, desktopOnly: true },
     ],
   },
 ];

@@ -13,7 +13,7 @@ export function Intro({ unit }: { unit: Unit }) {
     <section
       id="intro"
       aria-label={`Introducing ${unit.name}`}
-      className="relative isolate flex min-h-svh items-center overflow-clip px-4 pt-[calc(var(--rh-header-h)+1.25rem)] pb-10 md:px-8"
+      className="relative isolate flex min-h-svh items-center overflow-x-clip px-4 pt-[calc(var(--rh-header-h)+1.25rem)] pb-10 md:px-8"
     >
       {/* Back layer: blobs are part of beat 0; the rest fly in at beat 2. */}
       <div aria-hidden className="absolute inset-0 -z-10">
@@ -24,6 +24,7 @@ export function Intro({ unit }: { unit: Unit }) {
             index={i}
             eager
             fly={!s.name.startsWith("blob-")}
+            className={s.name.startsWith("blob-") ? "sticker-blob" : ""}
           />
         ))}
       </div>
@@ -76,7 +77,7 @@ export function Intro({ unit }: { unit: Unit }) {
 
         <div
           data-beat="polaroid"
-          className="mx-auto w-[min(58vw,300px)] md:w-[min(100%,360px)]"
+          className="mx-auto w-[min(58vw,300px)] md:w-[min(100%,360px,calc((100svh-12rem)*0.75))]"
         >
           {/* Lead photo; its full sticker set appears in the carousel. */}
           <Polaroid photo={lead} index={0} preload withStickers={false} eagerStickers />

@@ -30,7 +30,7 @@
   --shadow-card: var(--rh-shadow-card);
 }
 
-/* Chrome sizes shared by the header, bottom bar and anchor offsets. */
+/* Chrome sizes shared by the header, bottom bar and section padding. */
 :root {
   --rh-header-h: 64px;
   --rh-bar-h: 76px;
@@ -41,6 +41,23 @@
   html {
     scroll-padding-top: var(--rh-header-h);
     -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Desktop: every section is one full screen and the page snaps to them.
+     A flick can't skip a section; the footer is its own end stop. Sections
+     pad for the fixed header themselves, so no scroll padding is needed. */
+  @media (min-width: 768px) and (hover: hover) {
+    html {
+      scroll-snap-type: y mandatory;
+      scroll-padding-top: 0;
+    }
+    main > section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+    body > footer {
+      scroll-snap-align: end;
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -112,11 +129,28 @@
 
 .sticker {
   position: absolute;
+  left: var(--x);
+  top: var(--y);
+  --r-now: var(--r, 0deg); /* active tilt, used by the tap wiggle */
   width: calc(var(--s) * 1px * var(--sticker-scale));
   translate: -50% -50%;
   rotate: var(--r, 0deg);
   -webkit-user-select: none;
   user-select: none;
+}
+@media (min-width: 768px) {
+  .sticker {
+    left: var(--x-md, var(--x));
+    top: var(--y-md, var(--y));
+    rotate: var(--r-md, var(--r));
+    --r-now: var(--r-md, var(--r, 0deg));
+  }
+}
+
+/* Blobs never outgrow the section's height, so they only ever bleed off the
+   left/right screen edges, never get cut flat at a section edge. */
+.sticker-blob {
+  width: min(calc(var(--s) * 1px * var(--sticker-scale)), 42svh);
 }
 .sticker-fly {
   position: relative;
@@ -155,40 +189,29 @@
 
 /* ---------- Motion (SPEC §5) ---------- */
 /* data-motion="on" is set pre-paint by the inline script in layout.tsx,
-   only when the intro will animate (no reduced motion, no deep link). */
-
-/* Desktop: GSAP drives the pinned intro. Hide the beats until it takes
-   over (a 4s failsafe in the bootstrap un-hides them if it never does). */
-@media (min-width: 768px) and (hover: hover) {
-  [data-motion="on"] #intro :is([data-beat], [data-fly]) {
-    visibility: hidden;
+   only when the intro should animate (no reduced motion, no deep link).
+   Each beat plays once from first paint: pure CSS, so the lead photo
+   (the LCP element) never waits on JavaScript. */
+[data-motion="on"] #intro {
+  [data-beat="introducing"] {
+    animation: rh-rise 0.6s ease-out 0.1s both;
   }
-}
-
-/* Phones: no pin, no scrub. Each beat plays once from first paint, pure
-   CSS so the lead photo never waits on JavaScript (LCP). */
-@media (max-width: 767.98px), (hover: none) {
-  [data-motion="on"] #intro {
-    [data-beat="introducing"] {
-      animation: rh-rise 0.5s ease-out both;
-    }
-    [data-beat="logo"] {
-      animation: rh-pop 0.6s ease-out 0.15s both;
-    }
-    [data-beat="arch"] {
-      animation: rh-arch 0.6s ease-out 0.15s both;
-    }
-    [data-beat="tagline"] {
-      animation: rh-rise 0.5s ease-out 0.3s both;
-    }
-    [data-beat="polaroid"] {
-      animation: rh-slide 0.6s ease-out 0.35s both;
-    }
-    /* Stickers fly in from their nearest edge; the polaroid leads by 0.1s. */
-    [data-fly] {
-      animation: rh-fly 0.55s cubic-bezier(0.34, 1.56, 0.64, 1)
-        calc(0.45s + var(--i, 0) * 0.06s) both;
-    }
+  [data-beat="logo"] {
+    animation: rh-pop 0.7s ease-out 0.35s both;
+  }
+  [data-beat="arch"] {
+    animation: rh-arch 0.7s ease-out 0.35s both;
+  }
+  [data-beat="tagline"] {
+    animation: rh-rise 0.6s ease-out 0.55s both;
+  }
+  [data-beat="polaroid"] {
+    animation: rh-slide 0.7s ease-out 0.6s both;
+  }
+  /* Stickers fly in from their nearest edge; the polaroid leads by 0.1s. */
+  [data-fly] {
+    animation: rh-fly 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)
+      calc(0.7s + var(--i, 0) * 0.07s) both;
   }
 }
 @keyframes rh-rise {
@@ -239,12 +262,12 @@
 @keyframes rh-wiggle {
   0%,
   100% {
-    rotate: var(--r, 0deg);
+    rotate: var(--r-now, var(--r, 0deg));
   }
   25% {
-    rotate: calc(var(--r, 0deg) - 8deg);
+    rotate: calc(var(--r-now, var(--r, 0deg)) - 8deg);
   }
   75% {
-    rotate: calc(var(--r, 0deg) + 8deg);
+    rotate: calc(var(--r-now, var(--r, 0deg)) + 8deg);
   }
 }

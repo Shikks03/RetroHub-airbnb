@@ -42,11 +42,11 @@ export const viewport: Viewport = {
 };
 
 /**
- * Runs before first paint: arms the intro's hidden start state only when it
- * will actually animate (no reduced motion, not a /#photos or /#book deep
- * link). A 4s failsafe un-hides everything if GSAP never loads.
+ * Runs before first paint: arms the CSS intro reveals, except for reduced
+ * motion and /#photos or /#book deep links (those land on the finished
+ * intro). The reveals are pure CSS, so nothing can stay hidden if JS fails.
  */
-const motionBootstrap = `(function(){try{var d=document.documentElement;if(matchMedia("(prefers-reduced-motion: reduce)").matches||/^#(photos|book)$/.test(location.hash))return;d.dataset.motion="on";setTimeout(function(){if(!window.__rhMotion)delete d.dataset.motion},4000)}catch(e){}})()`;
+const motionBootstrap = `(function(){try{if(matchMedia("(prefers-reduced-motion: reduce)").matches||/^#(photos|book)$/.test(location.hash))return;document.documentElement.dataset.motion="on"}catch(e){}})()`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

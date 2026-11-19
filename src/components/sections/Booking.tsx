@@ -13,7 +13,7 @@ function formatReadOn(iso: string) {
 
 function List({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-2 pb-4 pl-1">
+    <ul className="space-y-2 pb-4 pl-1 md:space-y-1.5 md:text-[15px] md:leading-snug">
       {items.map((item) => (
         <li key={item} className="flex gap-3">
           <span aria-hidden className="mt-2 h-2 w-2 shrink-0 rounded-full bg-orange" />
@@ -29,21 +29,21 @@ export function Booking({ unit }: { unit: Unit }) {
     <section
       id="book"
       aria-labelledby="book-title"
-      className="relative overflow-x-clip px-4 py-16 md:py-24"
+      className="relative overflow-x-clip px-4 py-16 md:flex md:min-h-svh md:flex-col md:justify-center md:px-8 md:pt-[calc(var(--rh-header-h)+0.5rem)] md:pb-8"
     >
       <div className="mx-auto max-w-xl text-center">
         <p className="font-hand text-2xl font-bold text-plum">ready when you are</p>
         <h2
           id="book-title"
-          className="font-display text-[clamp(2.25rem,9vw,3.75rem)] leading-none text-ink"
+          className="font-display text-[clamp(2.25rem,min(9vw,8svh),3.75rem)] leading-none text-ink"
         >
           Book your stay
         </h2>
       </div>
 
-      <div className="relative mx-auto mt-20 max-w-xl md:mt-24">
+      <div className="relative mx-auto mt-20 w-full max-w-xl md:mt-[min(3rem,6svh)] md:max-w-5xl">
         {/* Stickers hug the card's edges, away from price and button text. */}
-        <Sticker placement={{ name: "key", x: 8, y: 1, size: 76, rotate: -24 }} index={1} className="z-10" />
+        <Sticker placement={{ name: "key", x: 8, y: 1, size: 76, rotate: -24, md: { x: -2, y: 16 } }} index={1} className="z-10" />
         <Sticker placement={{ name: "badge-round", x: 90, y: -2, size: 88, rotate: 10 }} index={2} className="z-10">
           <span className="absolute inset-0 grid place-items-center text-center font-display text-[13px] leading-[1.05] text-ink md:text-[17px]">
             Book
@@ -51,17 +51,20 @@ export function Booking({ unit }: { unit: Unit }) {
             now
           </span>
         </Sticker>
-        <Sticker placement={{ name: "cassette", x: 92, y: 98, size: 84, rotate: 8 }} index={3} className="z-10" />
-        <Sticker placement={{ name: "sparkle", x: 2, y: 62, size: 44 }} index={4} className="z-10" />
-        <Sticker placement={{ name: "tag-label", x: -6, y: 36, size: 96, rotate: -6, desktopOnly: true }} index={5} className="z-10">
+        <Sticker placement={{ name: "cassette", x: 92, y: 92, size: 84, rotate: 8, md: { x: 101, y: 52 } }} index={3} className="z-10" />
+        <Sticker placement={{ name: "sparkle", x: 2, y: 62, size: 44, md: { x: -2, y: 84 } }} index={4} className="z-10" />
+        <Sticker placement={{ name: "tag-label", x: -6, y: 36, size: 96, rotate: -6, desktopOnly: true, md: { y: 52 } }} index={5} className="z-10">
           <span className="absolute inset-0 flex -rotate-8 flex-col items-center justify-center pb-[6%] font-display text-[15px] leading-[1.45] text-ink">
             <span>10/10</span>
             <span>vibes</span>
           </span>
         </Sticker>
 
-        <div className="relative rounded-[20px] border-[3px] border-ink bg-paper px-5 pt-8 pb-6 shadow-card md:px-10 md:pt-10">
-          <div className="text-center">
+        {/* Phones: one column. Desktop: booking on the left, details on the
+            right, so the card fits a single screen. */}
+        <div className="relative grid rounded-[20px] border-[3px] border-ink bg-paper px-5 pt-8 pb-6 shadow-card md:grid-cols-2 md:gap-x-12 md:px-12 md:py-8">
+          <div className="md:col-start-1">
+          <div className="text-center md:text-left">
             {unit.price === null ? (
               <a
                 href={unit.airbnbUrl}
@@ -78,7 +81,7 @@ export function Booking({ unit }: { unit: Unit }) {
               </p>
             )}
 
-            <ul className="mt-4 flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm font-bold text-ink/80">
+            <ul className="mt-4 flex flex-wrap justify-center gap-x-2 md:justify-start gap-y-1 text-sm font-bold text-ink/80">
               {unit.facts.map((fact, i) => (
                 <li key={fact} className="flex items-center gap-2">
                   {i > 0 && <span aria-hidden>·</span>}
@@ -110,8 +113,10 @@ export function Booking({ unit }: { unit: Unit }) {
               Call {unit.phoneDisplay}
             </a>
           </div>
+          </div>
 
-          <div className="mt-8">
+          <div className="mt-8 md:col-start-2 md:row-span-2 md:row-start-1 md:mt-0">
+          <div>
             <h3 className="font-hand text-2xl font-bold text-plum">Good to know</h3>
             <div className="mt-2">
               <List items={unit.goodToKnow} />
@@ -126,8 +131,9 @@ export function Booking({ unit }: { unit: Unit }) {
               <List items={unit.checkout} />
             </Disclosure>
           </div>
+          </div>
 
-          <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t-2 border-ink/10 pt-4">
+          <div className="mt-2 flex flex-wrap md:col-start-1 md:mt-6 md:self-end items-center justify-between gap-x-4 gap-y-1 border-t-2 border-ink/10 pt-4">
             <p>
               <span className="font-bold">Where:</span> {unit.location}
             </p>
