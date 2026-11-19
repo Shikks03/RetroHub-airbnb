@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="240" height="100" fill="none" aria-hidden="true">
+  <defs>
+    <path id="tm-shape" d="M14 12 L24 22 L14 32 L24 42 L14 52 L24 62 L14 72 L24 82 L14 92 L226 92 L216 82 L226 72 L216 62 L226 52 L216 42 L226 32 L216 22 L226 12 Z"/>
+    <clipPath id="tm-clip"><use href="#tm-shape"/></clipPath>
+  </defs>
+  <use href="#tm-shape" fill="#F8C12F" opacity=".9"/>
+  <g clip-path="url(#tm-clip)" stroke="#FFFDF7" stroke-width="6" opacity=".4">
+    <path d="M40 4 L10 100"/><path d="M80 4 L50 100"/><path d="M120 4 L90 100"/>
+    <path d="M160 4 L130 100"/><path d="M200 4 L170 100"/><path d="M240 4 L210 100"/>
+  </g>
+</svg>

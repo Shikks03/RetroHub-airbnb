@@ -1,0 +1,38 @@
+/* The Retrohub — brand tokens.
+   Hex values were sampled from the client's logo, profile picture, House Rules
+   and Before-You-Check-Out art (nearest dominant colors), not from a brand guide.
+   If the client has an official palette, replace these. */
+:root {
+  /* surfaces */
+  --rh-paper: #FFFDF7;   /* polaroid card + die-cut sticker borders */
+  --rh-cream: #F8F1DF;   /* page background */
+  --rh-peach: #FED2AB;   /* warm alt background (cover photo) */
+
+  /* ink + purples */
+  --rh-ink: #4A0D29;     /* outlines, headline text */
+  --rh-plum: #6C295C;
+  --rh-grape: #86478B;
+  --rh-lavender: #C8B5E6;
+
+  /* warm */
+  --rh-orange: #EA6B31;
+  --rh-tomato: #D94E3E;
+  --rh-rust: #C9411B;
+  --rh-amber: #FDA20E;
+  --rh-mustard: #F8C12F;
+
+  /* cool + green */
+  --rh-sage: #ABC78C;
+  --rh-teal: #4FB3A7;
+  --rh-sky: #72BCC7;
+  --rh-mint: #A3CDBD;
+  --rh-cobalt: #2B1BC4;
+
+  /* accent */
+  --rh-pink: #FE5BC5;
+
+  /* shape language */
+  --rh-outline: 5px;        /* matches stroke-width in the stickers (at 240px) */
+  --rh-radius-card: 10px;
+  --rh-shadow-card: 0 10px 0 -2px rgba(74, 13, 41, 0.12), 0 18px 30px -10px rgba(74, 13, 41, 0.35);
+}

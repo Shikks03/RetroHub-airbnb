@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none" aria-hidden="true">
+  <defs>
+    <polygon id="st-shape" points="120,32 145.9,92.4 211.3,98.3 161.8,141.6 176.4,205.7 120,172 63.6,205.7 78.2,141.6 28.7,98.3 94.1,92.4"/>
+  </defs>
+  <use href="#st-shape" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="34" stroke-linejoin="round"/>
+  <use href="#st-shape" fill="#FFFDF7" stroke="#6C295C" stroke-width="14" stroke-linejoin="round"/>
+  <circle cx="104" cy="112" r="4.5" fill="#4A0D29"/>
+  <circle cx="136" cy="112" r="4.5" fill="#4A0D29"/>
+  <circle cx="94" cy="124" r="5" fill="#FE5BC5" opacity=".45"/>
+  <circle cx="146" cy="124" r="5" fill="#FE5BC5" opacity=".45"/>
+  <path d="M110 126 Q120 137 130 126" stroke="#4A0D29" stroke-width="4" stroke-linecap="round"/>
+</svg>

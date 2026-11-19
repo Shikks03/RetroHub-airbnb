@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none" aria-hidden="true">
+  <defs>
+    <path id="gc-body" d="M44 84 C26 84 18 128 30 160 C38 182 68 182 80 162 L90 148 H150 L160 162 C172 182 202 182 210 160 C222 128 214 84 196 84 Z"/>
+  </defs>
+  <g transform="translate(0 -6)">
+    <use href="#gc-body" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="22" stroke-linejoin="round"/>
+    <use href="#gc-body" fill="#E4DCEB" stroke="#4A0D29" stroke-width="5" stroke-linejoin="round"/>
+    <rect x="54" y="112" width="32" height="12" rx="3" fill="#6C295C" stroke="#4A0D29" stroke-width="3"/>
+    <rect x="64" y="102" width="12" height="32" rx="3" fill="#6C295C" stroke="#4A0D29" stroke-width="3"/>
+    <rect x="64" y="112" width="12" height="12" fill="#6C295C"/>
+    <g stroke="#4A0D29" stroke-width="3.5">
+      <circle cx="174" cy="100" r="9.5" fill="#72BCC7"/>
+      <circle cx="156" cy="118" r="9.5" fill="#ABC78C"/>
+      <circle cx="192" cy="118" r="9.5" fill="#D94E3E"/>
+      <circle cx="174" cy="136" r="9.5" fill="#F8C12F"/>
+    </g>
+    <g fill="#8B6F99" stroke="#4A0D29" stroke-width="2.5">
+      <rect x="-11" y="-4" width="22" height="8" rx="4" transform="translate(108 126) rotate(-25)"/>
+      <rect x="-11" y="-4" width="22" height="8" rx="4" transform="translate(134 126) rotate(-25)"/>
+    </g>
+  </g>
+</svg>

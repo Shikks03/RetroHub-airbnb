@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80" fill="none" aria-hidden="true">
+  <defs>
+    <path id="sq-line" d="M14 40 q18 -36 36 0 t36 0 t36 0 t36 0 t36 0 t36 0"/>
+  </defs>
+  <use href="#sq-line" stroke="#4A0D29" stroke-width="16" stroke-linecap="round"/>
+  <use href="#sq-line" stroke="#EA6B31" stroke-width="8" stroke-linecap="round"/>
+</svg>

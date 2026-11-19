@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none" aria-hidden="true">
+  <defs>
+    <path id="sp-shape" d="M120 14 Q126 114 226 120 Q126 126 120 226 Q114 126 14 120 Q114 114 120 14 Z"/>
+  </defs>
+  <use href="#sp-shape" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="18" stroke-linejoin="round"/>
+  <use href="#sp-shape" fill="#F8C12F" stroke="#4A0D29" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M120 44 Q122 100 150 112" stroke="#FFFDF7" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+</svg>

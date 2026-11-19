@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" width="240" height="170" fill="none" aria-hidden="true">
+  <defs>
+    <path id="rw-line" d="M8 60 C48 6 92 6 122 54 S192 102 232 50"/>
+  </defs>
+  <g stroke-width="15" stroke-linecap="butt">
+    <use href="#rw-line" stroke="#72BCC7"/>
+    <use href="#rw-line" stroke="#A3CDBD" transform="translate(0 14)"/>
+    <use href="#rw-line" stroke="#F8C12F" transform="translate(0 28)"/>
+    <use href="#rw-line" stroke="#EA6B31" transform="translate(0 42)"/>
+    <use href="#rw-line" stroke="#D94E3E" transform="translate(0 56)"/>
+  </g>
+</svg>

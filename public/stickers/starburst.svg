@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none" aria-hidden="true">
+  <defs>
+    <polygon id="sb-shape" points="120,20 139.9,72 190.7,49.3 168,100.1 220,120 168,139.9 190.7,190.7 139.9,168 120,220 100.1,168 49.3,190.7 72,139.9 20,120 72,100.1 49.3,49.3 100.1,72"/>
+  </defs>
+  <use href="#sb-shape" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="20" stroke-linejoin="round"/>
+  <use href="#sb-shape" fill="#FFFDF7" stroke="#2B1BC4" stroke-width="8" stroke-linejoin="round"/>
+  <circle cx="120" cy="120" r="14" fill="#2B1BC4"/>
+</svg>

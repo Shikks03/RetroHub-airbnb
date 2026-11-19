@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" fill="none" aria-hidden="true">
+  <defs>
+    <pattern id="ct-pattern" width="56" height="56" patternUnits="userSpaceOnUse" patternTransform="rotate(45 120 120)">
+      <rect width="56" height="56" fill="#FFFDF7"/>
+      <rect width="28" height="28" fill="#2A1520"/>
+      <rect x="28" y="28" width="28" height="28" fill="#2A1520"/>
+    </pattern>
+    <clipPath id="ct-clip">
+      <rect x="30" y="30" width="180" height="180" rx="28"/>
+    </clipPath>
+  </defs>
+  <rect x="30" y="30" width="180" height="180" rx="28" fill="#FFFDF7" stroke="#FFFDF7" stroke-width="20"/>
+  <g clip-path="url(#ct-clip)">
+    <rect width="240" height="240" fill="url(#ct-pattern)"/>
+  </g>
+  <rect x="30" y="30" width="180" height="180" rx="28" stroke="#4A0D29" stroke-width="5"/>
+</svg>
