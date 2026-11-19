@@ -156,7 +156,7 @@ export const units: Unit[] = [
         caption: "Queen bed, terrazzo pillow",
         stickers: [
           { name: "star", x: 96, y: 10, size: 64, rotate: 12 },
-          { name: "vinyl-pink", x: 2, y: 84, size: 80, rotate: -10 },
+          { name: "vinyl-pink", x: 2, y: 44, size: 76, rotate: -10 },
         ],
       },
       {
@@ -192,7 +192,7 @@ export const units: Unit[] = [
         alt: "Small balcony at night with a black railing, a warm wall lamp and a view of lit-up condo towers.",
         caption: "City lights from the balcony",
         stickers: [
-          { name: "star", x: 4, y: 10, size: 60, rotate: -12 },
+          { name: "star", x: 3, y: 48, size: 58, rotate: -12 },
           { name: "sparkle", x: 96, y: 62, size: 52 },
         ],
       },
@@ -202,8 +202,8 @@ export const units: Unit[] = [
     introStickers: [
       { name: "blob-sage", x: 2, y: 14, size: 240 },
       { name: "blob-mustard", x: 98, y: 92, size: 280 },
-      { name: "daisy-smiley-pink", x: 88, y: 14, size: 76, rotate: 12 },
-      { name: "sparkle", x: 12, y: 40, size: 44 },
+      { name: "daisy-smiley-pink", x: 88, y: 21, size: 72, rotate: 12 },
+      { name: "sparkle", x: 8, y: 31, size: 40 },
       { name: "star", x: 86, y: 60, size: 60, rotate: -10 },
       { name: "daisy-cream", x: 9, y: 80, size: 64, rotate: -8, desktopOnly: true },
       { name: "squiggle", x: 48, y: 94, size: 120, rotate: -4, desktopOnly: true },

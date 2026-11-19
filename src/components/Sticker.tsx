@@ -43,6 +43,9 @@ export function Sticker({
     top: `${y}%`,
     "--s": size,
     "--r": `${rotate}deg`,
+    // Phone fly-in (CSS): enter from the nearest side, staggered by index.
+    "--fx": x < 50 ? -1 : 1,
+    "--i": index,
     "--idle-delay": `${-((index * 1.37) % 4).toFixed(2)}s`,
     "--idle-dur": `${(6 + ((index * 0.83) % 3)).toFixed(2)}s`,
   } as CSSProperties;

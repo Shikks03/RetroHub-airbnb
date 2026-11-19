@@ -11,7 +11,7 @@ export function Photos({ unit }: { unit: Unit }) {
     <section
       id="photos"
       aria-labelledby="photos-title"
-      className="relative py-16 md:py-24"
+      className="relative overflow-x-clip py-16 md:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 text-center md:px-8 md:text-left">
         <p className="font-hand text-2xl font-bold text-plum">come on in</p>

@@ -37,7 +37,7 @@ export function Intro({ unit }: { unit: Unit }) {
             Introducing
           </p>
 
-          <div className="relative mt-1 inline-block md:mt-3">
+          <div className="relative mt-6 inline-block md:mt-10">
             {/* Rainbow arch rises behind the wordmark (beat 1). */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -47,7 +47,7 @@ export function Intro({ unit }: { unit: Unit }) {
               aria-hidden
               width={240}
               height={140}
-              className="pointer-events-none absolute bottom-[38%] left-1/2 -z-10 w-[92%] max-w-none -translate-x-1/2 md:left-[46%]"
+              className="pointer-events-none absolute bottom-[40%] left-1/2 -z-10 w-[68%] max-w-none -translate-x-1/2 md:left-[56%] md:w-[62%]"
             />
             {/* Placeholder wordmark until the client's transparent logo arrives. */}
             <h1
@@ -67,10 +67,11 @@ export function Intro({ unit }: { unit: Unit }) {
             <p className="mt-1 text-sm font-bold tracking-wide text-ink/70 uppercase">
               {unit.location}
             </p>
-            <p className="mt-8 hidden font-hand text-xl text-ink/70 md:block">
-              scroll for a peek ↓
-            </p>
           </div>
+          {/* Outside the animated beats so the first screen invites a scroll. */}
+          <p className="mt-8 hidden font-hand text-xl text-ink/70 md:block">
+            scroll for a peek ↓
+          </p>
         </div>
 
         <div

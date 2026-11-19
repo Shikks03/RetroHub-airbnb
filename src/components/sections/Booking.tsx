@@ -29,7 +29,7 @@ export function Booking({ unit }: { unit: Unit }) {
     <section
       id="book"
       aria-labelledby="book-title"
-      className="relative px-4 py-16 md:py-24"
+      className="relative overflow-x-clip px-4 py-16 md:py-24"
     >
       <div className="mx-auto max-w-xl text-center">
         <p className="font-hand text-2xl font-bold text-plum">ready when you are</p>
@@ -41,18 +41,18 @@ export function Booking({ unit }: { unit: Unit }) {
         </h2>
       </div>
 
-      <div className="relative mx-auto mt-12 max-w-xl">
+      <div className="relative mx-auto mt-20 max-w-xl md:mt-24">
         {/* Stickers hug the card's edges, away from price and button text. */}
-        <Sticker placement={{ name: "key", x: 4, y: 1, size: 76, rotate: -24 }} index={1} className="z-10" />
-        <Sticker placement={{ name: "badge-round", x: 95, y: 2, size: 88, rotate: 10 }} index={2} className="z-10">
+        <Sticker placement={{ name: "key", x: 8, y: 1, size: 76, rotate: -24 }} index={1} className="z-10" />
+        <Sticker placement={{ name: "badge-round", x: 90, y: -2, size: 88, rotate: 10 }} index={2} className="z-10">
           <span className="absolute inset-0 grid place-items-center text-center font-display text-[13px] leading-[1.05] text-ink md:text-[17px]">
             Book
             <br />
             now
           </span>
         </Sticker>
-        <Sticker placement={{ name: "cassette", x: 97, y: 97, size: 84, rotate: 8 }} index={3} className="z-10" />
-        <Sticker placement={{ name: "sparkle", x: -3, y: 62, size: 44 }} index={4} className="z-10" />
+        <Sticker placement={{ name: "cassette", x: 92, y: 98, size: 84, rotate: 8 }} index={3} className="z-10" />
+        <Sticker placement={{ name: "sparkle", x: 2, y: 62, size: 44 }} index={4} className="z-10" />
         <Sticker placement={{ name: "tag-label", x: -6, y: 36, size: 96, rotate: -6, desktopOnly: true }} index={5} className="z-10">
           <span className="absolute inset-0 flex -rotate-8 flex-col items-center justify-center pb-[6%] font-display text-[15px] leading-[1.45] text-ink">
             <span>10/10</span>
