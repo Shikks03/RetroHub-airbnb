@@ -7,6 +7,14 @@
  * them `null` until the client confirms them.
  */
 
+import type { StaticImageData } from "next/image";
+import balcony from "@/assets/photos/balcony.jpg";
+import bedroom from "@/assets/photos/bedroom.jpg";
+import kitchen from "@/assets/photos/kitchen.jpg";
+import livingRoom from "@/assets/photos/living-room.jpg";
+import shower from "@/assets/photos/shower.jpg";
+import toiletWasher from "@/assets/photos/toilet-washer.jpg";
+
 export const STICKERS = [
   "badge-round",
   "blob-lavender",
@@ -42,9 +50,9 @@ export type StickerName = (typeof STICKERS)[number];
 /** Where a sticker sits relative to its anchor (a card or the intro stage). */
 export type StickerPlacement = {
   name: StickerName;
-  /** Left edge, % of the anchor's width. Negative / >100 overlaps the edge. */
+  /** Sticker centre, % of the anchor's width. <0 or >100 bleeds past the edge. */
   x: number;
-  /** Top edge, % of the anchor's height. */
+  /** Sticker centre, % of the anchor's height. */
   y: number;
   /** Rendered width in px on phones; scaled up on desktop. */
   size: number;
@@ -55,9 +63,8 @@ export type StickerPlacement = {
 };
 
 export type UnitPhoto = {
-  src: string;
-  width: number;
-  height: number;
+  /** Static import: gives next/image real dimensions and a blur placeholder. */
+  src: StaticImageData;
   /** Describe the room, never "photo 1". */
   alt: string;
   /** Draft copy, pending client approval. */
@@ -130,8 +137,77 @@ export const units: Unit[] = [
       "Lock the door",
       "Message the host",
     ],
-    photos: [], // filled in step 2 (needs real alt text per photo)
-    introStickers: [], // placed in step 3
+    // Order per SPEC §4.2: strongest shot first, the dark balcony last.
+    // Captions are drafts for the client to approve.
+    photos: [
+      {
+        src: livingRoom,
+        alt: "Living room in warm yellow light: a black tufted sofa, a wavy paper floor lamp, a wall of retro posters, a projector screen, metal shelves with retro game controllers and books, a black-and-white checkered rug and a rack of snacks.",
+        caption: "Movie corner, snacks included",
+        stickers: [
+          { name: "lamp-wavy", x: -4, y: 46, size: 76, rotate: -8 },
+          { name: "controller", x: 94, y: 80, size: 84, rotate: 12 },
+          { name: "checker-tile", x: 92, y: 6, size: 56, rotate: 14, desktopOnly: true },
+        ],
+      },
+      {
+        src: bedroom,
+        alt: "Bedroom with a made-up bed, a terrazzo-print pillow and folded towels, three colorful posters above the headboard, a paper lantern and blackout blinds.",
+        caption: "Queen bed, terrazzo pillow",
+        stickers: [
+          { name: "star", x: 96, y: 10, size: 64, rotate: 12 },
+          { name: "vinyl-pink", x: 2, y: 84, size: 80, rotate: -10 },
+        ],
+      },
+      {
+        src: kitchen,
+        alt: "Galley kitchen with wood-finish cabinets covered in vinyl records, a sink, a two-burner electric stove, a fridge and a cat-print floor mat by the front door.",
+        caption: "Records on the cabinets",
+        stickers: [
+          { name: "vinyl-orange", x: 97, y: 26, size: 72, rotate: 8 },
+          { name: "vinyl-teal", x: 1, y: 66, size: 64, rotate: -6 },
+          { name: "key", x: 94, y: 88, size: 72, rotate: -20, desktopOnly: true },
+        ],
+      },
+      {
+        src: shower,
+        alt: "Private bathroom with a rain shower and water heater, a colorful patchwork shower curtain, a sink and a backlit mirror.",
+        caption: "Private bath, color included",
+        stickers: [
+          { name: "daisy-cream", x: 96, y: 12, size: 68, rotate: 10 },
+          { name: "sparkle", x: 2, y: 58, size: 48 },
+        ],
+      },
+      {
+        src: toiletWasher,
+        alt: "Toilet with a top-load washing machine beside it and a balloon-dog art print on the tiled wall.",
+        caption: "Yes, there's a washer. Yes, the poster is a vibe.",
+        stickers: [
+          { name: "squiggle", x: 88, y: 4, size: 92, rotate: 10 },
+          { name: "daisy-smiley-plum", x: 2, y: 78, size: 72, rotate: -12 },
+        ],
+      },
+      {
+        src: balcony,
+        alt: "Small balcony at night with a black railing, a warm wall lamp and a view of lit-up condo towers.",
+        caption: "City lights from the balcony",
+        stickers: [
+          { name: "star", x: 4, y: 10, size: 60, rotate: -12 },
+          { name: "sparkle", x: 96, y: 62, size: 52 },
+        ],
+      },
+    ],
+    // Positions are % of the intro stage. Blobs sit behind everything and
+    // bleed off-screen; on phones only ~4 small stickers show (SPEC §5).
+    introStickers: [
+      { name: "blob-sage", x: 2, y: 14, size: 240 },
+      { name: "blob-mustard", x: 98, y: 92, size: 280 },
+      { name: "daisy-smiley-pink", x: 88, y: 14, size: 76, rotate: 12 },
+      { name: "sparkle", x: 12, y: 40, size: 44 },
+      { name: "star", x: 86, y: 60, size: 60, rotate: -10 },
+      { name: "daisy-cream", x: 9, y: 80, size: 64, rotate: -8, desktopOnly: true },
+      { name: "squiggle", x: 48, y: 94, size: 120, rotate: -4, desktopOnly: true },
+    ],
   },
 ];
 

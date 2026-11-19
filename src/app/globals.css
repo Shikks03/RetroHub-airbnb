@@ -99,3 +99,56 @@
   background: var(--rh-paper);
   color: var(--rh-ink);
 }
+
+/* ---------- Stickers (SPEC §6) ---------- */
+:root {
+  --sticker-scale: 1;
+}
+@media (min-width: 768px) {
+  :root {
+    --sticker-scale: 1.3;
+  }
+}
+
+.sticker {
+  position: absolute;
+  width: calc(var(--s) * 1px * var(--sticker-scale));
+  translate: -50% -50%;
+  rotate: var(--r, 0deg);
+  -webkit-user-select: none;
+  user-select: none;
+}
+.sticker-fly {
+  position: relative;
+  display: block;
+}
+.sticker-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+}
+
+/* Idle bob: desktop pointers only, never with reduced motion. No filters. */
+@media (min-width: 768px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .sticker-img {
+    animation: rh-bob var(--idle-dur, 7s) ease-in-out var(--idle-delay, 0s) infinite alternate;
+  }
+}
+@keyframes rh-bob {
+  from {
+    translate: 0 -6px;
+    rotate: -3deg;
+  }
+  to {
+    translate: 0 6px;
+    rotate: 3deg;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
