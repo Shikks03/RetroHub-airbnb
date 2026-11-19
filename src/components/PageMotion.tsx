@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { scrollToY } from "@/lib/sectionScroll";
 
 /**
  * Intro replay + sticker tap-wiggle. The intro beats themselves are pure CSS
@@ -33,9 +34,8 @@ export function PageMotion() {
       if (!a) return;
       e.preventDefault();
       history.replaceState(null, "", location.pathname + location.search);
-      const reduce = reduceQuery.matches;
-      window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
-      if (reduce) return;
+      void scrollToY(0); // eased like the section snap on desktop
+      if (reduceQuery.matches) return;
       // Restart the CSS reveals: drop the attribute, force a reflow, re-arm.
       delete root.dataset.motion;
       void root.offsetWidth;

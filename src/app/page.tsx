@@ -1,5 +1,6 @@
 import { BottomBar } from "@/components/chrome/BottomBar";
 import { PageMotion } from "@/components/PageMotion";
+import { SectionSnap } from "@/components/SectionSnap";
 import { SiteHeader } from "@/components/chrome/SiteHeader";
 import { Booking } from "@/components/sections/Booking";
 import { Footer } from "@/components/sections/Footer";
@@ -48,6 +49,7 @@ export default function Home() {
       <Footer unit={unit} />
       <BottomBar unit={unit} />
       <PageMotion />
+      <SectionSnap />
     </>
   );
 }

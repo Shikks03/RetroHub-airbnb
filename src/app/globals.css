@@ -58,6 +58,11 @@
     body > footer {
       scroll-snap-align: end;
     }
+    /* SectionSnap (JS) is driving: its eased moves replace CSS snapping,
+       whose speed can't be controlled. */
+    html.js-snap {
+      scroll-snap-type: none;
+    }
   }
 
   @media (prefers-reduced-motion: no-preference) {

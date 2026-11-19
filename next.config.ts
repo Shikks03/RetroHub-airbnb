@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Hide the dev-only "N" badge; compile/runtime errors still show.
+  devIndicators: false,
   cacheComponents: true,
   partialPrefetching: true,
   images: {
