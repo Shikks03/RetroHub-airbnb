@@ -1,0 +1,101 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/* Expose brand tokens to Tailwind: bg-cream, text-ink, border-ink, font-display … */
+@theme inline {
+  --color-paper: var(--rh-paper);
+  --color-cream: var(--rh-cream);
+  --color-peach: var(--rh-peach);
+  --color-ink: var(--rh-ink);
+  --color-plum: var(--rh-plum);
+  --color-grape: var(--rh-grape);
+  --color-lavender: var(--rh-lavender);
+  --color-orange: var(--rh-orange);
+  --color-tomato: var(--rh-tomato);
+  --color-rust: var(--rh-rust);
+  --color-amber: var(--rh-amber);
+  --color-mustard: var(--rh-mustard);
+  --color-sage: var(--rh-sage);
+  --color-teal: var(--rh-teal);
+  --color-sky: var(--rh-sky);
+  --color-mint: var(--rh-mint);
+  --color-cobalt: var(--rh-cobalt);
+  --color-pink: var(--rh-pink);
+
+  --font-display: var(--font-shrikhand), "Georgia", serif;
+  --font-hand: var(--font-gaegu), "Comic Sans MS", cursive;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: var(--rh-radius-card);
+  --shadow-card: var(--rh-shadow-card);
+}
+
+/* Chrome sizes shared by the header, bottom bar and anchor offsets. */
+:root {
+  --rh-header-h: 64px;
+  --rh-bar-h: 76px;
+  color-scheme: light; /* brand is cream-only; no dark theme */
+}
+
+@layer base {
+  html {
+    scroll-padding-top: var(--rh-header-h);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    background: var(--rh-cream);
+    color: var(--rh-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip; /* stickers bleed off-screen; never a horizontal page scroll */
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--rh-ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* Retro pill button: ink outline + hard offset shadow that "presses" on tap. */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding-inline: 1.25rem;
+  border: 3px solid var(--rh-ink);
+  border-radius: 9999px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  box-shadow: 0 4px 0 0 var(--rh-ink);
+  transition:
+    transform 120ms ease-out,
+    box-shadow 120ms ease-out;
+  &:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 0 var(--rh-ink);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/* Primary: ink on orange (4.8:1). White on orange is only 3.2:1, so not used. */
+@utility btn-primary {
+  background: var(--rh-orange);
+  color: var(--rh-ink);
+}
+
+@utility btn-secondary {
+  background: var(--rh-paper);
+  color: var(--rh-ink);
+}
