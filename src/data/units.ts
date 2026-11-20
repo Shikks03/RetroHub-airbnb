@@ -96,6 +96,8 @@ export type Unit = {
   goodToKnow: string[];
   houseRules: string[];
   checkout: string[];
+  /** Games guests can play. Empty shows a "list coming soon" placeholder. */
+  games: string[];
   photos: UnitPhoto[];
   introStickers: StickerPlacement[];
 };
@@ -140,6 +142,9 @@ export const units: Unit[] = [
       "Lock the door",
       "Message the host",
     ],
+    // Placeholder until the client sends the actual game list. Don't guess
+    // titles from the controllers in the living-room photo.
+    games: [],
     // Order per SPEC §4.2: strongest shot first, the dark balcony last.
     // Captions are drafts for the client to approve.
     photos: [
@@ -164,18 +169,18 @@ export const units: Unit[] = [
       },
       {
         src: kitchen,
-        alt: "Galley kitchen with wood-finish cabinets covered in vinyl records, a sink, a two-burner electric stove, a fridge and a cat-print floor mat by the front door.",
-        caption: "Records on the cabinets",
+        alt: "Galley kitchen with wood-finish cabinets decorated with vinyl-record print cutouts, a sink, a two-burner electric stove, a fridge and a cat-print floor mat by the front door.",
+        caption: "Stocked kitchen: cook your own meals",
         stickers: [
           { name: "vinyl-orange", x: 97, y: 26, size: 72, rotate: 8 },
           { name: "vinyl-teal", x: 1, y: 66, size: 64, rotate: -6 },
-          { name: "key", x: 94, y: 88, size: 72, rotate: -20, desktopOnly: true },
+          { name: "key", x: 100, y: 68, size: 72, rotate: -20, desktopOnly: true },
         ],
       },
       {
         src: shower,
         alt: "Private bathroom with a rain shower and water heater, a colorful patchwork shower curtain, a sink and a backlit mirror.",
-        caption: "Private bath, color included",
+        caption: "Private bath, heater included",
         stickers: [
           { name: "daisy-cream", x: 96, y: 12, size: 68, rotate: 10 },
           { name: "sparkle", x: 2, y: 58, size: 48 },
@@ -192,8 +197,8 @@ export const units: Unit[] = [
       },
       {
         src: balcony,
-        alt: "Small balcony at night with a black railing, a warm wall lamp and a view of lit-up condo towers.",
-        caption: "City lights from the balcony",
+        alt: "Small balcony at night with a black railing and a warm wall lamp, facing the neighboring condo building with the swimming pool below.",
+        caption: "Balcony over the pool",
         stickers: [
           { name: "star", x: 3, y: 48, size: 58, rotate: -12 },
           { name: "sparkle", x: 96, y: 62, size: 52 },
@@ -204,13 +209,11 @@ export const units: Unit[] = [
     // bleed off the left/right screen edges only, never the section's top or
     // bottom. On phones only ~4 small stickers show (SPEC §5).
     introStickers: [
-      { name: "blob-sage", x: 0, y: 22, size: 240 },
-      { name: "blob-mustard", x: 100, y: 74, size: 280 },
-      { name: "daisy-smiley-pink", x: 88, y: 21, size: 72, rotate: 12 },
-      { name: "sparkle", x: 8, y: 31, size: 40 },
-      { name: "star", x: 86, y: 60, size: 60, rotate: -10 },
-      { name: "daisy-cream", x: 4, y: 62, size: 64, rotate: -8, desktopOnly: true },
-      { name: "squiggle", x: 48, y: 92, size: 120, rotate: -4, desktopOnly: true },
+      { name: "daisy-smiley-pink", x: 90, y: 17, size: 72, rotate: 12, md: { x: 91, y: 24 } },
+      { name: "sparkle", x: 10, y: 34, size: 40, md: { x: 49, y: 17 } },
+      { name: "star", x: 88, y: 50, size: 56, rotate: -10, md: { x: 61, y: 70, rotate: -14 } },
+      { name: "tamagotchi", x: 7, y: 66, size: 84, rotate: -10, desktopOnly: true, md: { x: 60, y: 31, rotate: -12 } },
+      { name: "daisy-cream", x: 94, y: 78, size: 64, rotate: -8, desktopOnly: true, md: { x: 94, y: 70 } },
     ],
   },
 ];

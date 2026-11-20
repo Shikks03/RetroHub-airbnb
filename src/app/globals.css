@@ -33,6 +33,7 @@
 /* Chrome sizes shared by the header, bottom bar and section padding. */
 :root {
   --rh-header-h: 64px;
+  --rh-footer-h: 82px;
   --rh-bar-h: 76px;
   color-scheme: light; /* brand is cream-only; no dark theme */
 }
@@ -249,6 +250,137 @@
   from {
     opacity: 0;
     translate: calc(var(--fx, 1) * 70vw) 0;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    radial-gradient(60% 55% at 72% 48%, var(--rh-paper) 0%, transparent 70%);
+}
+/* One continuous canvas behind every section: peach at the top easing to
+   cream, so no section has a background edge of its own. */
+.page-canvas {
+  background: linear-gradient(180deg, var(--rh-peach) 0, var(--rh-cream) 115svh);
+}
+.hero-halftone {
+  position: absolute;
+  inset: auto auto 0 0;
+  width: 45%;
+  height: 55%;
+  background-image: radial-gradient(rgba(74, 13, 41, 0.16) 1.2px, transparent 1.6px);
+  background-size: 8px 8px;
+  mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at 0% 100%, #000 0%, transparent 70%);
+}
+.ribbon-band {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* Wordmark: plum with a cream die-cut edge and an orange hard shadow,
+   echoing the logo's lettering. */
+.hero-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 0.9;
+  color: var(--rh-plum);
+  -webkit-text-stroke: 0.14em var(--rh-paper);
+  paint-order: stroke fill;
+  filter: drop-shadow(0.04em 0.06em 0 var(--rh-orange));
+}
+.hero-the {
+  font-size: clamp(2.5rem, 11vw, 4.5rem);
+  rotate: -6deg;
+  margin-left: 0.15em;
+  margin-bottom: -0.1em;
+}
+.hero-name {
+  font-size: clamp(3.5rem, 17.5vw, 8.5rem);
+}
+@media (max-width: 767px) {
+  .hero-wordmark {
+    align-items: center;
+  }
+}
+
+/* Ticker tape along the bottom edge. */
+.hero-tape {
+  position: absolute;
+  inset-inline: -4%;
+  bottom: 1.25rem;
+  rotate: -1.6deg;
+  overflow: hidden;
+  background: var(--rh-mustard);
+  border-block: 3px solid var(--rh-ink);
+  color: var(--rh-ink);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  z-index: 1;
+}
+.hero-tape-track {
+  display: flex;
+  width: max-content;
+  padding-block: 0.65rem;
+}
+.hero-tape-set {
+  display: flex;
+  flex: none;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hero-tape-set li {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.hero-tape-dot {
+  margin-inline: 1.25rem;
+  color: var(--rh-tomato);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-tape-track {
+    animation: rh-tape 38s linear infinite;
+  }
+}
+@keyframes rh-tape {
+  to {
+    translate: -50% 0;
+  }
+}
+@media (min-width: 768px) {
+  .hero-tape {
+    /* Straddles the seam like washi tape holding two pages together. */
+    bottom: -1.1rem;
+    font-size: 1rem;
+  }
+}
+
+[data-motion="on"] #intro {
+  .ribbon-band {
+    animation: rh-draw 1.2s cubic-bezier(0.5, 0, 0.2, 1) calc(var(--b, 0) * 0.07s) both;
+  }
+  [data-beat="cta"] {
+    animation: rh-rise 0.6s ease-out 0.7s both;
+  }
+  [data-beat="tape"] {
+    animation: rh-tape-in 0.7s cubic-bezier(0.34, 1.3, 0.64, 1) 0.9s both;
+  }
+}
+@keyframes rh-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes rh-tape-in {
+  from {
+    opacity: 0;
+    translate: 0 120%;
   }
 }
 

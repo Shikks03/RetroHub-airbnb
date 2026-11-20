@@ -15,7 +15,10 @@ export function SiteHeader({ unit }: { unit: Unit }) {
       data-hidden={hidden}
       // Keyboard users tabbing into a hidden header bring it back.
       onFocusCapture={() => setHidden(false)}
-      className="fixed inset-x-0 top-0 z-40 bg-cream/95 transition-transform duration-300 ease-out data-[hidden=true]:-translate-y-full motion-reduce:transition-none"
+      className={`fixed inset-x-0 top-0 z-40 transition-[transform,background-color] duration-300 ease-out data-[hidden=true]:-translate-y-full motion-reduce:transition-none ${
+        // Transparent over the hero so the rainbow runs to the top edge.
+        introPassed ? "bg-cream/95" : "bg-transparent"
+      }`}
     >
       <div className="mx-auto flex h-(--rh-header-h) max-w-6xl items-center justify-between gap-4 px-4 md:px-8">
         {/* Placeholder wordmark until the client sends a transparent logo (SPEC §3). */}
@@ -52,7 +55,7 @@ export function SiteHeader({ unit }: { unit: Unit }) {
           rel="noopener"
           className={`btn btn-primary ${introPassed ? "max-md:hidden" : ""}`}
         >
-          Book
+          Book now
         </a>
       </div>
     </header>

@@ -29,7 +29,7 @@ export function Booking({ unit }: { unit: Unit }) {
     <section
       id="book"
       aria-labelledby="book-title"
-      className="relative overflow-x-clip px-4 py-16 md:flex md:min-h-svh md:flex-col md:justify-center md:px-8 md:pt-[calc(var(--rh-header-h)+0.5rem)] md:pb-8"
+      className="relative overflow-x-clip px-4 py-16 md:flex md:min-h-[calc(100svh-var(--rh-footer-h))] md:flex-col md:justify-center md:px-8 md:pt-[calc(var(--rh-header-h)+0.5rem)] md:pb-6"
     >
       <div className="mx-auto max-w-xl text-center">
         <p className="font-hand text-2xl font-bold text-plum">ready when you are</p>
@@ -129,6 +129,15 @@ export function Booking({ unit }: { unit: Unit }) {
             </Disclosure>
             <Disclosure title="Before you check out">
               <List items={unit.checkout} />
+            </Disclosure>
+            <Disclosure title="Games to play">
+              {unit.games.length > 0 ? (
+                <List items={unit.games} />
+              ) : (
+                <p className="pb-4 pl-1 text-ink/70 md:text-[15px] md:leading-snug">
+                  Game list coming soon. Message us to ask what&apos;s on the shelf!
+                </p>
+              )}
             </Disclosure>
           </div>
           </div>

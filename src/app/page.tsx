@@ -41,7 +41,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, `${String.fromCharCode(92)}u003c`) }}
       />
       <SiteHeader unit={unit} />
-      <main data-unit={unit.theme}>
+      <main data-unit={unit.theme} className="page-canvas">
         <Intro unit={unit} />
         <Photos unit={unit} />
         <Booking unit={unit} />

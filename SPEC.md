@@ -107,10 +107,10 @@ Six polaroid cards in this order (all source photos are 1536×2048, 3:4 portrait
 |---|---|---|---|
 | 1 | `LivingRoom.jpg` | "Movie corner, snacks included" | `lamp-wavy`, `controller`, `checker-tile` |
 | 2 | `BedRoom.jpg` | "Queen bed, terrazzo pillow" | `star`, `vinyl-pink` |
-| 3 | `Kitchen.jpg` | "Records on the cabinets" | `vinyl-orange`, `vinyl-teal`, `key` |
-| 4 | `ShowerArea.jpg` | "Private bath, color included" | `daisy-cream`, `sparkle` |
+| 3 | `Kitchen.jpg` | "Stocked kitchen: cook your own meals" | `vinyl-orange`, `vinyl-teal`, `key` |
+| 4 | `ShowerArea.jpg` | "Private bath, heater included" | `daisy-cream`, `sparkle` |
 | 5 | `Toilet.jpg` | "Yes, there's a washer. Yes, the poster is a vibe." | `squiggle`, `daisy-smiley-plum` |
-| 6 | `Balcony.jpg` | "City lights from the balcony" | `star`, `sparkle` |
+| 6 | `Balcony.jpg` | "Balcony over the pool" | `star`, `sparkle` |
 
 - Photo 1 is the strongest shot, so lead with it. The balcony is the weakest (dark, night), so keep it last.
 - Do not claim a feature a photo doesn't prove (for example, the projector is visible but a karaoke or streaming setup is not stated anywhere).
@@ -136,7 +136,7 @@ One card on the cream background, with a key sticker and badge:
 - Rating line: "5.0 on Airbnb (3 reviews)", with the date it was read. Remove it if the rating changes or the client prefers not to show it.
 - Primary CTA: **Book on Airbnb** · secondary: **Message us** (Messenger) · tertiary: **Call**
 - "Good to know" (short, honest): ₱1,000 refundable security deposit · valid IDs for all guests · registration processed by building admin weekdays 9–4 so message ahead for weekend arrivals (confirm wording with the client)
-- **Collapsible rows** (closed by default): **House rules** and **Before you check out**
+- **Collapsible rows** (closed by default): **House rules**, **Before you check out** and **Games to play** (placeholder text until the client sends the game list)
   - House rules (from the client's poster): no smoking, vaping or pets · no tape or adhesives on the walls · quiet hours 10:00 PM–8:00 AM · registered guests only to sleep over · pantry snacks are pay-as-you-go · tell the host right away if something breaks
   - Before you check out: turn off lights and AC · wash used dishes · throw away trash · lock the door · message the host
 - "Where": Shore Residences, Pasay City + "Open in Maps" link (search link, not a pin)
@@ -294,3 +294,4 @@ Sections (`Intro`, `Photos`, `Booking`) are components that take a unit. Adding 
 4. Approval of draft captions and the house-rules wording
 5. Confirmation of contact links (Messenger, phone) and whether bookings go only through Airbnb or also direct
 6. Whether showing the Airbnb rating (5.0 from 3 reviews) is wanted
+7. The list of games available in the unit

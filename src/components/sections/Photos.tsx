@@ -33,16 +33,20 @@ export function Photos({ unit }: { unit: Unit }) {
         className="no-scrollbar mt-4 snap-x snap-mandatory overflow-x-auto overscroll-x-contain md:mt-2 md:scroll-px-[max(2rem,calc((100vw-72rem)/2+2rem))]"
       >
         <ul className="flex w-max gap-5 px-[calc((100vw-min(76vw,340px))/2)] py-12 md:gap-10 md:py-8 md:px-[max(2rem,calc((100vw-72rem)/2+2rem))]">
-          {unit.photos.map((photo, i) => (
-            <li
-              key={photo.caption}
-              aria-label={`${i + 1} of ${count}`}
-              aria-roledescription="slide"
-              className="w-[min(76vw,340px)] shrink-0 snap-center md:w-[min(calc((min(100vw,72rem)-9rem)/3),calc((100svh-24rem)*0.75+1.5rem))] md:snap-start"
-            >
-              <Polaroid photo={photo} index={i} />
-            </li>
-          ))}
+          {/* Three identical sets make the strip endless (see CarouselControls);
+              the outer two are hidden from assistive tech. */}
+          {[0, 1, 2].flatMap((copy) =>
+            unit.photos.map((photo, i) => (
+              <li
+                key={`${copy}-${photo.caption}`}
+                aria-hidden={copy !== 1 || undefined}
+                aria-roledescription="slide"
+                className="w-[min(76vw,340px)] shrink-0 snap-center md:w-[min(calc((min(100vw,72rem)-9rem)/3),calc((100svh-24rem)*0.75+1.5rem))] md:snap-start"
+              >
+                <Polaroid photo={photo} index={i} />
+              </li>
+            )),
+          )}
         </ul>
       </div>
 
