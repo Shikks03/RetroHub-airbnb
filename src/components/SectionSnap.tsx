@@ -19,9 +19,9 @@ import { isAnimating, scrollToY, setSnapActive } from "@/lib/sectionScroll";
  */
 
 const DESKTOP = "(min-width: 768px) and (hover: hover) and (prefers-reduced-motion: no-preference)";
-const SECTION_IDS = ["intro", "photos", "book"];
+const SECTION_IDS = ["intro", "photos", "reviews", "book"];
 const GESTURE_GAP_MS = 180; // pause that separates two wheel gestures
-const SECTION_LINK = /^#(photos|book)$/;
+const SECTION_LINK = /^#(photos|reviews|book)$/;
 
 type Stops = { points: number[]; tall: { top: number; bottom: number }[] };
 

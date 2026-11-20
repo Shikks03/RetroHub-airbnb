@@ -6,6 +6,7 @@ import { Booking } from "@/components/sections/Booking";
 import { Footer } from "@/components/sections/Footer";
 import { Intro } from "@/components/sections/Intro";
 import { Photos } from "@/components/sections/Photos";
+import { Reviews } from "@/components/sections/Reviews";
 import { primaryUnit as unit } from "@/data/units";
 
 /**
@@ -44,6 +45,7 @@ export default function Home() {
       <main data-unit={unit.theme} className="page-canvas">
         <Intro unit={unit} />
         <Photos unit={unit} />
+        <Reviews unit={unit} />
         <Booking unit={unit} />
       </main>
       <Footer unit={unit} />

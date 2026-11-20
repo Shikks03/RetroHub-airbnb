@@ -198,6 +198,17 @@
    only when the intro should animate (no reduced motion, no deep link).
    Each beat plays once from first paint: pure CSS, so the lead photo
    (the LCP element) never waits on JavaScript. */
+/* Reviews' tape: the other way up, sky-blue, so the two don't read as a copy. */
+.hero-tape.hero-tape--seam {
+  rotate: 1.4deg;
+  background: var(--rh-sky);
+  bottom: -0.9rem;
+  z-index: 5;
+}
+.hero-tape.hero-tape--seam .hero-tape-track {
+  animation-direction: reverse;
+}
+
 [data-motion="on"] #intro {
   [data-beat="introducing"] {
     animation: rh-rise 0.6s ease-out 0.1s both;
@@ -309,7 +320,7 @@
 .hero-tape {
   position: absolute;
   inset-inline: -4%;
-  bottom: 1.25rem;
+  bottom: -0.9rem; /* straddles the seam into the next section */
   rotate: -1.6deg;
   overflow: hidden;
   background: var(--rh-mustard);

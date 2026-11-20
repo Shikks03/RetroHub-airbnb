@@ -1,6 +1,7 @@
 import type { Unit } from "@/data/units";
 import { Polaroid } from "../Polaroid";
 import { Sticker } from "../Sticker";
+import { RIBBONS, Ribbons } from "../Ribbons";
 
 /**
  * Beats (SPEC §4.1) are tagged with data-beat / data-fly for the CSS in
@@ -11,55 +12,6 @@ import { Sticker } from "../Sticker";
  * sweeping in from the corners, a sticker-collage polaroid, and a tilted
  * "ticker tape" of facts along the bottom.
  */
-
-// outside → in, same palette as the profile-picture ribbons
-const BANDS = ["#D94E3E", "#EA6B31", "#F8C12F", "#A3CDBD", "#72BCC7"];
-
-type Ribbon = { d: string; dx: number; dy: number; w: number };
-
-const RIBBONS = {
-  desktop: [
-    // top-left corner
-    // Both ends are extended in a straight line (same tangent) far past the
-    // viewport so every band, however far it's stepped, runs off the screen.
-    { d: "M-500 330 L-40 330 C 190 330 330 190 410 -40 L 600 -600", dx: 26, dy: 26, w: 40 },
-    // bottom-right corner (bands run inward)
-    // ...and keeps going down-left into the next section (viewBox is two screens tall).
-    { d: "M2000 410 L1480 470 C 1270 490 1250 720 1030 790 C 880 838 780 880 700 960 L -300 1960", dx: -26, dy: -26, w: 40 },
-  ],
-  mobile: [
-    { d: "M-500 150 L-30 150 C 90 150 150 100 190 -30 L 330 -480", dx: 17, dy: 17, w: 26 },
-    { d: "M900 570 L430 610 C 320 620 290 700 220 790 C 200 815 190 830 170 850 L -80 1100", dx: -17, dy: -17, w: 26 },
-  ],
-} satisfies Record<string, Ribbon[]>;
-
-function Ribbons({ set, viewBox, className }: { set: Ribbon[]; viewBox: string; className: string }) {
-  return (
-    <svg
-      aria-hidden
-      viewBox={viewBox}
-      preserveAspectRatio="xMidYMid slice"
-      className={`absolute inset-0 h-full w-full ${className}`}
-      fill="none"
-    >
-      {set.map((r, ri) =>
-        BANDS.map((color, bi) => (
-          // Outermost band first; each next band steps inward.
-          <path
-            key={`${ri}-${bi}`}
-            className="ribbon-band"
-            style={{ ["--b" as string]: ri * 2 + bi }}
-            d={r.d}
-            pathLength={1}
-            stroke={color}
-            strokeWidth={r.w}
-            transform={`translate(${r.dx * bi} ${r.dy * bi})`}
-          />
-        )),
-      )}
-    </svg>
-  );
-}
 
 export function Intro({ unit }: { unit: Unit }) {
   const [lead] = unit.photos;
@@ -99,7 +51,7 @@ export function Intro({ unit }: { unit: Unit }) {
           </h1>
 
           <div data-beat="tagline">
-            <p className="mt-5 font-hand text-2xl text-plum md:text-3xl">
+            <p className="mt-1 font-hand text-2xl text-plum md:mt-0 md:text-3xl">
               {unit.tagline}
             </p>
             <p className="mt-1 text-sm font-bold tracking-wide text-ink/70 uppercase">

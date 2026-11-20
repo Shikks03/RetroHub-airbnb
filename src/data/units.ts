@@ -74,6 +74,15 @@ export type UnitPhoto = {
   stickers: StickerPlacement[];
 };
 
+export type GuestReview = {
+  /** First name, as shown publicly on Airbnb. */
+  name: string;
+  /** Verbatim from Airbnb; trim with an ellipsis, never reword. */
+  text: string;
+  /** Rotation + accent so the cards read as a pinned-up set. */
+  accent: "mustard" | "sky" | "sage";
+};
+
 export type Unit = {
   slug: string;
   name: string;
@@ -93,6 +102,8 @@ export type Unit = {
   price: number | null;
   /** Airbnb rating as read on `readOn`. `null` hides the rating line. */
   rating: { value: number; count: number; readOn: string } | null;
+  /** Real guest reviews, quoted from the Airbnb listing on `readOn`. */
+  reviews: GuestReview[];
   goodToKnow: string[];
   houseRules: string[];
   checkout: string[];
@@ -118,6 +129,25 @@ export const units: Unit[] = [
     facts: ["1 bedroom", "2 beds", "Private bath", "Self check-in"],
     price: null,
     rating: { value: 5.0, count: 3, readOn: "2026-11-19" },
+    // Read from the Airbnb listing on 2026-11-19. All 3 reviews are 5 stars;
+    // the third is trimmed (its two small notes on plates and tissue are left out).
+    reviews: [
+      {
+        name: "Mervi",
+        text: "One of the best place we’ve rented out in Shore! Very responsive host and patient with queries.",
+        accent: "mustard",
+      },
+      {
+        name: "Judey",
+        text: "The unit was aesthetically pleasing and looks exactly like the pictures in the listing. It was also comfortable to stay at. Check-in was smooth and hassle-free.",
+        accent: "sky",
+      },
+      {
+        name: "Gwyneth",
+        text: "Overall, we really enjoyed our time here. The host was a great communicator, and we’d happily recommend this spot for a weekend getaway.",
+        accent: "sage",
+      },
+    ],
     // Wording pending client confirmation (SPEC §4.3).
     goodToKnow: [
       "₱1,000 refundable security deposit on top of the booking total",
@@ -224,6 +254,7 @@ export const primaryUnit = units[0];
 export const SECTIONS = [
   { id: "intro", label: "Intro" },
   { id: "photos", label: "Photos" },
+  { id: "reviews", label: "Reviews" },
   { id: "book", label: "Book" },
 ] as const;
 

@@ -46,7 +46,7 @@ export const viewport: Viewport = {
  * motion and /#photos or /#book deep links (those land on the finished
  * intro). The reveals are pure CSS, so nothing can stay hidden if JS fails.
  */
-const motionBootstrap = `(function(){try{if(matchMedia("(prefers-reduced-motion: reduce)").matches||/^#(photos|book)$/.test(location.hash))return;document.documentElement.dataset.motion="on"}catch(e){}})()`;
+const motionBootstrap = `(function(){try{if(matchMedia("(prefers-reduced-motion: reduce)").matches||/^#(photos|reviews|book)$/.test(location.hash))return;document.documentElement.dataset.motion="on"}catch(e){}})()`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
