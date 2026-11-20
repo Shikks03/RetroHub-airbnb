@@ -44,21 +44,10 @@ export function Booking({ unit }: { unit: Unit }) {
       <div className="relative mx-auto mt-20 w-full max-w-xl md:mt-[min(3rem,6svh)] md:max-w-5xl">
         {/* Stickers hug the card's edges, away from price and button text. */}
         <Sticker placement={{ name: "key", x: 8, y: 1, size: 76, rotate: -24, md: { x: -2, y: 16 } }} index={1} className="z-10" />
-        <Sticker placement={{ name: "badge-round", x: 90, y: -2, size: 88, rotate: 10 }} index={2} className="z-10">
-          <span className="absolute inset-0 grid place-items-center text-center font-display text-[13px] leading-[1.05] text-ink md:text-[17px]">
-            Book
-            <br />
-            now
-          </span>
-        </Sticker>
+        <Sticker placement={{ name: "badge-round", x: 90, y: -2, size: 88, rotate: 10 }} index={2} className="z-10" />
         <Sticker placement={{ name: "cassette", x: 92, y: 92, size: 84, rotate: 8, md: { x: 101, y: 52 } }} index={3} className="z-10" />
         <Sticker placement={{ name: "sparkle", x: 2, y: 62, size: 44, md: { x: -2, y: 84 } }} index={4} className="z-10" />
-        <Sticker placement={{ name: "tag-label", x: -6, y: 36, size: 96, rotate: -6, desktopOnly: true, md: { y: 52 } }} index={5} className="z-10">
-          <span className="absolute inset-0 flex -rotate-8 flex-col items-center justify-center pb-[6%] font-display text-[15px] leading-[1.45] text-ink">
-            <span>10/10</span>
-            <span>vibes</span>
-          </span>
-        </Sticker>
+        <Sticker placement={{ name: "tag-label", x: -6, y: 36, size: 96, rotate: -6, desktopOnly: true, md: { y: 52 } }} index={5} className="z-10" />
 
         {/* Phones: one column. Desktop: booking on the left, details on the
             right, so the card fits a single screen. */}
